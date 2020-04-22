@@ -1,12 +1,7 @@
 import React, {useState} from 'react'
 
-const Formulario = () => {
-    //State del formulario
-    const [search, setSearch] = useState({
-        city: '',
-        country:''
-    });
-
+const Formulario = ({ search ,setSearch, setConsult }) => {
+  
     //State para errores
     const [error, setError] = useState(false)
 
@@ -31,7 +26,8 @@ const Formulario = () => {
                 return;
             }
             setError(false);
-        //pasarlo al componente principal
+
+            setConsult(true);
     }
 
 
