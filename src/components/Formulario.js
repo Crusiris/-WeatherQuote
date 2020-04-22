@@ -5,7 +5,10 @@ const Formulario = () => {
     const [search, setSearch] = useState({
         city: '',
         country:''
-    })
+    });
+
+    //State para errores
+    const [error, setError] = useState(false)
 
     //Destructuring para asignacion simple en los value
     const { city, country } = search;
@@ -19,13 +22,28 @@ const Formulario = () => {
         })
     }
 
+    //Funcion enviar formulario
+    const handleSubmit = e =>{
+        e.preventDefault();
+        //validar
+            if(city.trim()==="" || country.trim()===""){
+                setError(true);
+                return;
+            }
+            setError(false);
+        //pasarlo al componente principal
+    }
+
 
     return ( 
-        <form>
+        <form
+            onSubmit = {handleSubmit}
+        >
+            {error ? <p className="red darken-4 error">Todos los campos son obligatorios</p>:null}
             <div className="input-field col s12">
                 <input
                     type="text"
-                    name="ciudad"
+                    name="city"
                     id="ciudad"
                     value = {city}
                     onChange={handleChange}
@@ -35,7 +53,7 @@ const Formulario = () => {
 
                 <div className="input-field col s12">
                     <select
-                    name="pais"
+                    name="country"
                     id="pais"
                     value={country}
                     onChange={handleChange}
@@ -52,6 +70,14 @@ const Formulario = () => {
                     <label htmlFor="pais">Pais: </label>
                 </div>
             </div>
+
+            <div className="input-field col s12">
+                <button
+                    type="submit"
+                    className="waves-effect waves-light btn-large btn-block yellow accent-4 col s12"
+                >Buscar Clima</button>
+            </div>
+
         </form>
      );
 }
