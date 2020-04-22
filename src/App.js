@@ -62,7 +62,7 @@ function App() {
   return (
     <Fragment>
       <Header
-      titulo='Clima React App'
+      titulo='WeatherQuote'
       />
 
       <div className="contenedor-form">
