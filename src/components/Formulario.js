@@ -28,6 +28,8 @@ const Formulario = ({ search ,setSearch, setConsult }) => {
             setError(false);
 
             setConsult(true);
+
+           
     }
 
 
