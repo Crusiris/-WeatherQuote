@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import Error from './Error';
 
 const Formulario = ({ search ,setSearch, setConsult }) => {
@@ -44,6 +45,7 @@ const Formulario = ({ search ,setSearch, setConsult }) => {
                     type="text"
                     name="city"
                     id="ciudad"
+                    placeholder="Ejem Santiago"
                     value = {city}
                     onChange={handleChange}
                 />
@@ -58,6 +60,8 @@ const Formulario = ({ search ,setSearch, setConsult }) => {
                     onChange={handleChange}
                     >
                         <option value="">-- Seleccione un pais --</option>
+                        <option value ="CL">Chile</option>
+                        <option value ="VEN">Venezuela</option>
                         <option value="US">Estados Unidos</option>
                         <option value="MX">México</option>
                         <option value="AR">Argentina</option>
@@ -81,4 +85,10 @@ const Formulario = ({ search ,setSearch, setConsult }) => {
      );
 }
  
+Formulario.propTypes={
+    search: PropTypes.object.isRequired,
+    setSearch: PropTypes.func.isRequired,
+    setConsult: PropTypes.func.isRequired
+}
+
 export default Formulario;
